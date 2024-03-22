@@ -1,5 +1,5 @@
 [Unit]
-Description=Bitcoind Docker Container
+Description=Bitbid Docker Container
 Documentation=https://github.com/imnotsatoshi/docker-bitbid
 Requires=docker.service
 After=docker.service
