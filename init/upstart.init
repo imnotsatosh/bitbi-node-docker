@@ -1,15 +1,15 @@
-# Copy to /etc/init/docker-bitcoind.conf
-description "Docker container for bitcoind p2p node"
+# Copy to /etc/init/docker-bitbid.conf
+description "Docker container for bitbid p2p node"
 start on filesystem and started docker
 stop on runlevel [!2345]
 respawn
 pre-start script
   # Clean-up if left behind
-  docker rm -f bitcoind-node || true
+  docker rm -f bitbid-node || true
   
   # Attempt to always update and fail silently if the network isn't ready
-  docker pull kylemanna/bitcoind || true
+  docker pull imnotsatoshi/bitbid || true
 end script
 script
-  exec docker run --rm -v bitcoind-data:/bitcoin --name=bitcoind-node --rm -p 8333:8333 -p 127.0.0.1:8332:8332 kylemanna/bitcoind
+  exec docker run --rm -v bitbid-data:/bitbi --name=bitbid-node --rm -p 9801:9801 -p 127.0.0.1:9800:9800 imnotsatoshi/bitbid
 end script
